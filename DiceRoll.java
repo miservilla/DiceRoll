@@ -1,3 +1,4 @@
+import java.security.PrivateKey;
 import java.util.Scanner;
 
 /**
@@ -10,9 +11,9 @@ public class DiceRoll {
         int pigPlayer1 = 0;
         int pigPlayer2 = 0;
         int playerCounter = 0;
-        int turnTotal = 0;
+        int turnTotal;
 
-        while (pigPlayer1 <100 || pigPlayer2 < 100) {
+        while (pigPlayer1 < 100 && pigPlayer2 < 100) {
             System.out.println("\nScore: " + pigPlayer1 + "-" + pigPlayer2 + ".");
             playerCounter++;
 
@@ -26,9 +27,16 @@ public class DiceRoll {
                 pigPlayer1 += turnTotal;
             }
         }
+        if (pigPlayer1 > pigPlayer2){
+            System.out.println("Congratulations Pig player 1, you won!");
+        }
+        else {
+            System.out.println("Congratulations Pig player 2, you won!");
+        }
 
     }
-    public static int PlayerRoll() {
+//    Method to roll the dice.
+    private static int PlayerRoll() {
         Scanner scanIn = new Scanner(System.in);
         String playAgain = "Y";
         int turnTotal = 0;
@@ -48,7 +56,7 @@ public class DiceRoll {
         return turnTotal;
     }
     //Method to generate random number.
-    public static int RandomNumber () {
+    private static int RandomNumber () {
         int rand = (int) (Math.random() * 6) + 1;
             return rand;
         }
